@@ -22,6 +22,18 @@ The `formset` method can take the following parameters:
 | `addBtnClass`      | string  | Class to be inserted into the "add" button                       |
 | `rmBtnClass`       | string  | Class to be inserted into the "remove" button                    |
 
+### Methods
+
+The widget also supplies three methods to programatically interact with the
+formset:
+
+- `addForm()`: Creates a new form in the formset;
+- `removeForm(form)`: Removes the supplied form from the formset. If `form` is
+not supplied, removes the last subform;
+- `setNumForms(n)`: Sets the number of visible forms to `n`, adding or removing
+as required.
+
+
 ## Example
 Suppose your Django template renders a supplied formset:
 
@@ -57,3 +69,10 @@ $('#formset-container').formset({
 Since we didn't specify `displayControls` and the button configuration
 parameters, this formset will render the controls using an `a` tag with "Add"
 as the text for the add button, and "x" for the remove button.
+
+After the formset is setup, one can programatically interact with it:
+
+```
+// Configures the formset to have 3 subforms
+$('#formset-container').formset('setNumForms', 3);
+```
